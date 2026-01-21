@@ -5,9 +5,7 @@ env/
 __pycache__/
 *.pyc
 
-# Django
-db.sqlite3
-staticfiles/
+
 
 # Env
 .env

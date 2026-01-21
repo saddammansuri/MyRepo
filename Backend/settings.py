@@ -17,11 +17,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 
-DEBUG = os.getenv("DEBUG") == "True"
-
-SECRET_KEY = os.getenv("SECRET_KEY")
 
 
+SECRET_KEY = 'django-insecure-lb-d4bc%08fj0daaor8#so(&kjdi3=u=$0qw$^@7=18n1=ig%k'
+
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -77,15 +77,11 @@ WSGI_APPLICATION = 'Backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",  # local dev fallback
-        conn_max_age=600,
-        ssl_require=False
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',  # SQLite backend
+        'NAME': BASE_DIR / 'db.sqlite3',         # Database file path
+    }
 }
-print("DEBUG:", DEBUG)
-print("DATABASE_URL:", os.environ.get("DATABASE_URL"))
-
 
 
 
